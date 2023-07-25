@@ -4,7 +4,44 @@
   justify-content: space-between;
   align-items: center;
   padding: 6rem;
+  box-sizing: border-box;
   min-height: 100vh;
+  max-height: 100vh;
+}
+
+.landscape {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -2;
+}
+
+.landscape__cover {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: rgb(28 26 26 / 70%);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.text {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.text p {
+  font-size: 24px;
+}
+
+.logo__wrapper {
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .description {
@@ -40,16 +77,18 @@
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(25%, auto));
+  display: flex;
   width: var(--max-width);
   max-width: 100%;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
 }
 
 .card {
-  padding: 1rem 1.2rem;
+  padding: 1rem;
   border-radius: var(--border-radius);
-  background: rgba(var(--card-rgb), 0);
+  background: rgba(var(--card-rgb), 0.1);
   border: 1px solid rgba(var(--card-border-rgb), 0);
   transition: background 200ms, border 200ms;
 }
@@ -61,7 +100,6 @@
 
 .card h2 {
   font-weight: 600;
-  margin-bottom: 0.7rem;
 }
 
 .card p {
@@ -110,7 +148,7 @@
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
-    background: rgba(var(--card-rgb), 0.1);
+    background:  #25d366;
     border: 1px solid rgba(var(--card-border-rgb), 0.15);
   }
 
@@ -127,6 +165,10 @@
 
 /* Mobile */
 @media (max-width: 700px) {
+  .main {
+    padding: 2rem;
+  }
+
   .content {
     padding: 4rem;
   }
@@ -140,14 +182,11 @@
 
   .card {
     padding: 1rem 2.5rem;
-  }
-
-  .card h2 {
-    margin-bottom: 0.5rem;
+    background: #25d366;
   }
 
   .center {
-    padding: 8rem 0 6rem;
+    padding: 4rem 0;
   }
 
   .center::before {
@@ -200,22 +239,14 @@
     );
     z-index: 1;
   }
-}
 
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
-  .grid {
-    grid-template-columns: repeat(2, 50%);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .vercelLogo {
-    filter: invert(1);
+  .logo__wrapper img {
+      width: 300px;
+      height: 300px;
   }
 
-  .logo {
-    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
+  .text p {
+    font-size: 20px;
   }
 }
 
@@ -227,3 +258,4 @@
     transform: rotate(0deg);
   }
 }
+
